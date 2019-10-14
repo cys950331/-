@@ -1,4 +1,4 @@
-package com.example.hw1;
+package com.cookandroid.hw1;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,8 +9,6 @@ import android.content.Intent;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.lang.String;
-import androidx.annotation.Nullable;
-
 
 
 public class secondac extends Activity {

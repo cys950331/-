@@ -1,4 +1,4 @@
-package com.example.hw1;
+package com.cookandroid.hw1;
 
 import org.junit.Test;
 
