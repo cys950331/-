@@ -6,16 +6,28 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
-import android.graphics.Color;
 import android.widget.Toast;
+import java.util.ArrayList;
+import java.lang.String;
+import androidx.annotation.Nullable;
 
 
-public class secondac extends MainActivity {
+
+public class secondac extends Activity {
     Button back;
     Button check;
     Button save;
-    EditText etid;
+    EditText etid,etpw;
+    String id,pw;
+    ArrayList <String> idlist = new ArrayList<String>();
+    ArrayList<String> pwlist = new ArrayList<String>();
 
+    public void setIdlist(ArrayList<String> idlist, String s){
+        this.idlist.add(s);
+    }
+    public void setPasswordlist(ArrayList<String> pwlist, String s){
+        this.pwlist.add(s);
+    }
 
 
     @Override
@@ -29,27 +41,32 @@ public class secondac extends MainActivity {
         check = (Button) findViewById(R.id.buttoncheck);
         save = (Button) findViewById(R.id.buttonsave);
         etid = (EditText)findViewById(R.id.editText3);
+        etpw = (EditText) findViewById(R.id.editText4);
         id = etid.getText().toString();
+        pw = etpw.getText().toString();
+
+
 
 
         back.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
+
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(etid.getText().toString().length() == 0){
-                    Toast.makeText(secondac.this, "id를 입력하세요.",Toast.LENGTH_SHORT).show();
-                    etid.requestFocus();
-                    return;
-                }
-                Intent result = new Intent();
-                result.putExtra("id", etid.getText().toString());
-                setResult(RESULT_OK, result);
-                finish();
+                setIdlist(idlist, id);
+                setPasswordlist(pwlist, pw);
+                Toast.makeText(secondac.this, "회원가입 완료", Toast.LENGTH_SHORT).show();
+                Intent inintent = new Intent(getApplicationContext(), MainActivity.class);
+                inintent.putExtra("hw2", idlist);
+                inintent.putExtra("pwlist", pwlist);
+                startActivity(inintent);
             }
         });
     }
