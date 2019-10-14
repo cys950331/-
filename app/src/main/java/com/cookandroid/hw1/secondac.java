@@ -17,6 +17,7 @@ public class secondac extends Activity {
     Button save;
     EditText etid,etpw;
     String id,pw;
+    String ipid;
     ArrayList <String> idlist = new ArrayList<String>();
     ArrayList<String> pwlist = new ArrayList<String>();
 
@@ -42,6 +43,29 @@ public class secondac extends Activity {
         etpw = (EditText) findViewById(R.id.editText4);
         id = etid.getText().toString();
         pw = etpw.getText().toString();
+
+
+
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int count = 0;
+                for(int i=0; i<idlist.size(); i++){
+                    int index = i;
+
+                    ipid = id;
+                    if(ipid.equals(idlist.get(index))){
+                        count++;
+                    }
+
+                }
+                if(count == 0){
+                    Toast.makeText(secondac.this, "사용가능한 id입니다. ", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(secondac.this, "중복되는 id입니다. ", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 
 
